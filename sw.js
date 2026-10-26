@@ -1,7 +1,7 @@
 // Caches only the app itself so it opens instantly and offline.
 // Your data is NOT stored here — it lives in the Google Sheet.
 // Bump VERSION whenever you change index.html so phones pick up the update.
-const VERSION = 'milkbank-v1.0.0';
+const VERSION = 'milkbank-v1.1.0';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {

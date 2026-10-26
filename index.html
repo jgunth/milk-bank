@@ -255,7 +255,7 @@ input{font:inherit;color:inherit}
 
 <script>
 'use strict';
-const VERSION = '1.0.0';
+const VERSION = '1.1.0';
 
 /* ---------- icons ---------- */
 const ICONS = {
@@ -378,17 +378,21 @@ function render(){
     if (e.type === 'pump') pumped += e.oz; if (e.type === 'feed') fed += e.oz; }
   $('todayPill').textContent = (pumped || fed) ? `Today  +${fmt(pumped)} pumped · −${fmt(fed)} fed` : '';
 
-  // days of supply at the recent feeding pace (last 7 days)
-  const feeds = list.filter(e => e.type === 'feed');
+  // Days of bottles left, at the average bottle volume of the last 7 COMPLETE days.
+  // Nursing isn't logged, so this is bottle demand only. Today is skipped because
+  // it's still in progress, and the estimate stays hidden until there are at least
+  // 3 separate days with bottles logged, so one feeding can't produce "688 days".
   let daysTxt = '';
-  if (feeds.length){
-    const weekAgo = Date.now() - 7*864e5;
-    const recent = feeds.filter(e => new Date(e.ts) >= weekAgo);
-    const oldest = Math.max(weekAgo, Math.min(...feeds.map(e => +new Date(e.ts))));
-    const span = Math.min(7, Math.max(1, (Date.now() - oldest) / 864e5));
-    const perDay = recent.reduce((s,e) => s + e.oz, 0) / span;
+  const startToday = new Date(); startToday.setHours(0,0,0,0);
+  const windowStart = new Date(startToday); windowStart.setDate(windowStart.getDate() - 7);
+  const recent = list.filter(e => e.type === 'feed' && new Date(e.ts) >= windowStart && new Date(e.ts) < startToday);
+  const dayKeys = new Set(recent.map(e => new Date(e.ts).toDateString()));
+  if (dayKeys.size >= 3){
+    const firstDay = new Date(Math.min(...recent.map(e => +new Date(e.ts)))); firstDay.setHours(0,0,0,0);
+    const spanDays = Math.max(1, Math.round((startToday - firstDay) / 864e5));
+    const perDay = recent.reduce((s,e) => s + e.oz, 0) / spanDays;
     const bal = total(list);
-    if (perDay > 0 && bal > 0) daysTxt = `≈ ${Math.floor(bal / perDay)} days of feeds`;
+    if (perDay > 0 && bal > 0) daysTxt = `≈ ${Math.floor(bal / perDay)} days of bottles`;
   }
   $('daysPill').textContent = daysTxt;
 

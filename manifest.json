@@ -1,6 +1,6 @@
 {
-  "name": "Milk Bank",
-  "short_name": "Milk Bank",
+  "name": "Milky Bank",
+  "short_name": "Milky Bank",
   "description": "Track pumped, fed, and donated breast milk.",
   "start_url": "./",
   "scope": "./",

@@ -6,13 +6,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Milk Bank">
+<meta name="apple-mobile-web-app-title" content="Milky Bank">
 <meta name="theme-color" content="#FBF6F1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#17121A" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" href="icon-192.png">
-<title>Milk Bank</title>
+<title>Milky Bank</title>
 <style>
 :root{
   --bg:#FBF6F1; --card:#FFFFFF; --ink:#3B2A3A; --muted:#8C7A86; --line:#F0E6E0;
@@ -159,7 +159,7 @@ input{font:inherit;color:inherit}
 
 <div class="wrap" id="main">
   <header class="top">
-    <div class="brand"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c3.8 4.6 6.5 8.2 6.5 11.4a6.5 6.5 0 0 1-13 0C5.5 10.7 8.2 7.1 12 2.5z"/></svg>Milk Bank</div>
+    <div class="brand"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c3.8 4.6 6.5 8.2 6.5 11.4a6.5 6.5 0 0 1-13 0C5.5 10.7 8.2 7.1 12 2.5z"/></svg>Milky Bank</div>
     <button class="sync" id="syncBtn" aria-label="Sync now"><span class="dot"></span><span id="syncText">Synced</span></button>
     <button class="icon-btn" id="settingsBtn" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></button>
   </header>
@@ -234,7 +234,7 @@ input{font:inherit;color:inherit}
   <div class="wrap">
     <div class="ob-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c3.8 4.6 6.5 8.2 6.5 11.4a6.5 6.5 0 0 1-13 0C5.5 10.7 8.2 7.1 12 2.5z"/></svg></div>
     <div id="ob1">
-      <h1>Milk Bank</h1>
+      <h1>Milky Bank</h1>
       <p>First, connect to the Google Sheet that keeps everything safe.</p>
       <label class="field"><span>Web app URL</span><input id="obUrl" placeholder="https://script.google.com/macros/s/…/exec" autocapitalize="off" autocorrect="off" spellcheck="false"></label>
       <label class="field"><span>Secret key</span><input id="obKey" type="password" autocapitalize="off" autocorrect="off" spellcheck="false"></label>
@@ -255,7 +255,7 @@ input{font:inherit;color:inherit}
 
 <script>
 'use strict';
-const VERSION = '1.1.0';
+const VERSION = '1.2.0';
 
 /* ---------- icons ---------- */
 const ICONS = {
